@@ -1,0 +1,26 @@
+<p>Listado de héroes</p>
+
+<!-- El elemento aparecerá si el ngIf es true -->
+<!-- El ngIf logra identificar que heroeBorrado no sea '', false, null o undefined-->
+<div *ngIf = "heroeBorrado; else noBorrado">
+  <h3>Heroe borrado <small>{{heroeBorrado}}</small></h3>
+
+</div>
+
+<!-- ngTemplate es una referencia interna que solo es posible llamarda desde el mismo template (html) -->
+<ng-template #noBorrado>
+  <h3>No se ha borrado nada</h3>
+</ng-template>
+
+
+<br>
+<button (click)="borrarHeroe()">Borrar</button>
+
+<ul>
+  <!-- Tenemos directivas estructurales para modificar el DOM de una forma fácil -->
+  <!-- ngFor -->
+  <!-- En este caso duplica heroe en base a la cantidad de heroes -->
+  <li *ngFor="let heroe of heroes; let i = index;"> {{ i+1 }} - {{heroe}} </li>
+</ul>
+
+
